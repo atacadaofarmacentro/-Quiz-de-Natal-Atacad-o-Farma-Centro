@@ -459,15 +459,6 @@
         0 8px 16px rgba(180,0,0,.3);
     }
 
-    .btn-primary:disabled {
-
-      opacity: .6;
-
-      cursor: not-allowed;
-
-      transform: none;
-    }
-
     .btn-whatsapp {
 
       display: inline-flex;
@@ -1401,24 +1392,6 @@
       "5561992186067";
 
 
-    /*
-     * IMPORTANTE:
-     *
-     * Este é o ponto onde futuramente
-     * podemos conectar um backend.
-     *
-     * NÃO coloque as respostas corretas
-     * em um servidor público ou em uma
-     * API sem autenticação.
-     *
-     * A validação definitiva deverá
-     * acontecer no servidor.
-     */
-
-    const API_URL =
-      "";
-
-
     /* =====================================
        PERGUNTAS
     ===================================== */
@@ -1705,10 +1678,6 @@
         normalizePhone(phone);
 
 
-      participationId =
-        generateParticipationId();
-
-
       currentQuestion = 0;
 
 
@@ -1941,46 +1910,35 @@
 
 
     /* =====================================
-       FINALIZAR
+       FINALIZAR COM GABARITO EMBUTIDO NO ID
     ===================================== */
 
-    async function finishParticipation() {
-
-
-      /*
-       * IMPORTANTE:
-       *
-       * Não calculamos a pontuação
-       * aqui no navegador.
-       *
-       * As respostas serão enviadas
-       * para validação no servidor.
-       */
-
+    function finishParticipation() {
 
       quizContainer.style.display =
         "none";
-
 
       whatsappCard.style.display =
         "block";
 
 
+      // Gera o gabarito cifrado (1 para acerto, 0 para erro)
+      let gabarito = "";
+      answers.forEach((ans, idx) => {
+        if (ans !== null && ans === questions[idx].correct) {
+          gabarito += "1";
+        } else {
+          gabarito += "0";
+        }
+      });
+
+
+      // Concatena o ID aleatório com o gabarito no final (ex: AF-M4K9X-11010)
+      participationId = generateParticipationId() + "-" + gabarito;
+
+
       participationIdElement.textContent =
         participationId;
-
-
-      /*
-       * -----------------------------------
-       * MODO ATUAL
-       * -----------------------------------
-       *
-       * Enquanto não houver backend,
-       * o WhatsApp recebe os dados da
-       * participação.
-       *
-       * O cupom NÃO é gerado aqui.
-       */
 
 
       const message =
@@ -2012,64 +1970,6 @@
         encodeURIComponent(message);
 
 
-      /*
-       * -----------------------------------
-       * FUTURO BACKEND
-       * -----------------------------------
-       *
-       * Quando API_URL estiver configurada,
-       * podemos enviar os dados para o servidor.
-       */
-
-
-      if (API_URL) {
-
-        try {
-
-          await fetch(
-            API_URL,
-            {
-
-              method: "POST",
-
-              headers: {
-                "Content-Type":
-                  "application/json"
-              },
-
-              body: JSON.stringify({
-
-                participationId:
-                  participationId,
-
-                name:
-                  participantName,
-
-                phone:
-                  participantPhone,
-
-                answers:
-                  answers
-
-              })
-
-            }
-          );
-
-        }
-
-        catch (error) {
-
-          console.error(
-            "Erro ao registrar participação:",
-            error
-          );
-
-        }
-
-      }
-
-
       window.scrollTo({
         top: 200,
         behavior: "smooth"
@@ -2077,10 +1977,7 @@
 
     }
 
-
   </script>
 
-
 </body>
-
 </html>
