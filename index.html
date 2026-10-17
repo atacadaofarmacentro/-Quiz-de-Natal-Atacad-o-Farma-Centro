@@ -1,0 +1,1467 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Quiz de Natal | Atacadão Farma Centro</title>
+
+  <meta name="description"
+        content="Participe do Quiz de Natal do Atacadão Farma Centro. Responda 5 perguntas sobre saúde, farmácia e cuidados pessoais e concorra ao seu cupom.">
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      background: #f7f7f7;
+      color: #222;
+      line-height: 1.5;
+    }
+
+    /* =========================
+       HEADER
+    ========================= */
+
+    header {
+      background: linear-gradient(135deg, #b40000, #e00000);
+      color: white;
+      padding: 18px 20px;
+      box-shadow: 0 3px 12px rgba(0,0,0,0.18);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .header-container {
+      max-width: 1100px;
+      margin: auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .logo-icon {
+      width: 48px;
+      height: 48px;
+      background: white;
+      color: #c00000;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 25px;
+      font-weight: bold;
+    }
+
+    .logo-text h1 {
+      font-size: 22px;
+      font-weight: 900;
+      letter-spacing: .5px;
+    }
+
+    .logo-text p {
+      font-size: 13px;
+      opacity: .95;
+    }
+
+    .header-button {
+      background: white;
+      color: #c00000;
+      text-decoration: none;
+      padding: 10px 16px;
+      border-radius: 25px;
+      font-weight: bold;
+      font-size: 14px;
+      transition: .2s;
+    }
+
+    .header-button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 5px 12px rgba(0,0,0,.2);
+    }
+
+    /* =========================
+       HERO / NATAL
+    ========================= */
+
+    .hero {
+      max-width: 1100px;
+      margin: 25px auto 15px;
+      padding: 0 15px;
+    }
+
+    .christmas-banner {
+      position: relative;
+      overflow: hidden;
+      border-radius: 20px;
+      padding: 35px 25px;
+      color: white;
+      text-align: center;
+      background:
+        radial-gradient(circle at 10% 20%, rgba(255,255,255,.2) 0 3px, transparent 4px),
+        radial-gradient(circle at 80% 30%, rgba(255,255,255,.2) 0 3px, transparent 4px),
+        radial-gradient(circle at 30% 80%, rgba(255,255,255,.18) 0 3px, transparent 4px),
+        linear-gradient(135deg, #b40000, #e50000 55%, #9d0000);
+      box-shadow: 0 8px 25px rgba(0,0,0,.15);
+    }
+
+    .christmas-banner::before {
+      content: "🎄";
+      position: absolute;
+      left: 20px;
+      top: 15px;
+      font-size: 55px;
+      opacity: .8;
+    }
+
+    .christmas-banner::after {
+      content: "🎁";
+      position: absolute;
+      right: 20px;
+      bottom: 10px;
+      font-size: 55px;
+      opacity: .8;
+    }
+
+    .christmas-banner h2 {
+      font-size: 32px;
+      margin-bottom: 8px;
+      font-weight: 900;
+    }
+
+    .christmas-banner p {
+      font-size: 17px;
+      max-width: 700px;
+      margin: auto;
+    }
+
+    .christmas-highlight {
+      display: inline-block;
+      margin-top: 18px;
+      padding: 10px 20px;
+      background: #fff;
+      color: #b40000;
+      border-radius: 30px;
+      font-weight: 900;
+      font-size: 16px;
+    }
+
+    /* =========================
+       CONTEÚDO
+    ========================= */
+
+    .container {
+      max-width: 850px;
+      margin: 25px auto 60px;
+      padding: 0 15px;
+    }
+
+    .intro-card {
+      background: white;
+      border-radius: 18px;
+      padding: 25px;
+      box-shadow: 0 5px 18px rgba(0,0,0,.08);
+      margin-bottom: 20px;
+      text-align: center;
+    }
+
+    .intro-card h2 {
+      color: #b40000;
+      font-size: 25px;
+      margin-bottom: 10px;
+    }
+
+    .intro-card p {
+      color: #555;
+      margin-bottom: 15px;
+    }
+
+    .rules {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 15px;
+    }
+
+    .rule {
+      background: #fff4f4;
+      color: #a60000;
+      border: 1px solid #ffd1d1;
+      border-radius: 20px;
+      padding: 8px 14px;
+      font-size: 13px;
+      font-weight: bold;
+    }
+
+    /* =========================
+       PROGRESSO
+    ========================= */
+
+    .progress-wrapper {
+      margin-bottom: 20px;
+    }
+
+    .progress-info {
+      display: flex;
+      justify-content: space-between;
+      color: #666;
+      font-size: 14px;
+      font-weight: bold;
+      margin-bottom: 7px;
+    }
+
+    .progress-bar {
+      height: 10px;
+      background: #e9e9e9;
+      border-radius: 20px;
+      overflow: hidden;
+    }
+
+    .progress-fill {
+      height: 100%;
+      width: 20%;
+      background: linear-gradient(90deg, #b40000, #e60000);
+      border-radius: 20px;
+      transition: width .3s ease;
+    }
+
+    /* =========================
+       PERGUNTA
+    ========================= */
+
+    .quiz-card {
+      background: white;
+      border-radius: 20px;
+      padding: 28px;
+      box-shadow: 0 7px 25px rgba(0,0,0,.09);
+    }
+
+    .question-number {
+      color: #b40000;
+      font-size: 14px;
+      font-weight: 900;
+      margin-bottom: 8px;
+      text-transform: uppercase;
+    }
+
+    .question {
+      font-size: 21px;
+      font-weight: 800;
+      color: #222;
+      margin-bottom: 22px;
+    }
+
+    .options {
+      display: grid;
+      gap: 12px;
+    }
+
+    .option {
+      position: relative;
+    }
+
+    .option input {
+      position: absolute;
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    .option label {
+      display: block;
+      border: 2px solid #e5e5e5;
+      border-radius: 13px;
+      padding: 15px 16px;
+      cursor: pointer;
+      background: #fff;
+      transition: all .2s ease;
+      font-size: 15px;
+    }
+
+    .option label:hover {
+      border-color: #d00000;
+      background: #fff7f7;
+    }
+
+    .option input:checked + label {
+      border-color: #c00000;
+      background: #fff0f0;
+      color: #a00000;
+      font-weight: bold;
+      box-shadow: 0 3px 10px rgba(180,0,0,.1);
+    }
+
+    .option-letter {
+      display: inline-flex;
+      width: 30px;
+      height: 30px;
+      align-items: center;
+      justify-content: center;
+      background: #eee;
+      border-radius: 50%;
+      margin-right: 8px;
+      font-weight: bold;
+      color: #555;
+    }
+
+    .option input:checked + label .option-letter {
+      background: #c00000;
+      color: white;
+    }
+
+    /* =========================
+       BOTÕES
+    ========================= */
+
+    .button-area {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      margin-top: 25px;
+    }
+
+    button {
+      border: none;
+      cursor: pointer;
+      font-family: inherit;
+    }
+
+    .btn {
+      padding: 13px 22px;
+      border-radius: 28px;
+      font-weight: 900;
+      font-size: 15px;
+      transition: .2s;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, #b40000, #e00000);
+      color: white;
+      box-shadow: 0 5px 12px rgba(180,0,0,.25);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 16px rgba(180,0,0,.3);
+    }
+
+    .btn-secondary {
+      background: #eee;
+      color: #444;
+    }
+
+    .btn-secondary:hover {
+      background: #ddd;
+    }
+
+    .error-message {
+      display: none;
+      margin-top: 15px;
+      padding: 12px;
+      border-radius: 10px;
+      background: #fff0f0;
+      color: #b00000;
+      font-weight: bold;
+      text-align: center;
+    }
+
+    /* =========================
+       RESULTADO
+    ========================= */
+
+    .result {
+      display: none;
+      background: white;
+      border-radius: 20px;
+      padding: 35px 25px;
+      box-shadow: 0 8px 28px rgba(0,0,0,.1);
+      text-align: center;
+    }
+
+    .result-icon {
+      width: 75px;
+      height: 75px;
+      border-radius: 50%;
+      margin: 0 auto 15px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 38px;
+    }
+
+    .result.approved .result-icon {
+      background: #e6f8e9;
+    }
+
+    .result.failed .result-icon {
+      background: #fff0f0;
+    }
+
+    .result h2 {
+      font-size: 28px;
+      margin-bottom: 10px;
+    }
+
+    .result.approved h2 {
+      color: #168b32;
+    }
+
+    .result.failed h2 {
+      color: #b40000;
+    }
+
+    .score {
+      font-size: 21px;
+      font-weight: 900;
+      margin: 15px 0;
+    }
+
+    .result-text {
+      max-width: 600px;
+      margin: 0 auto 20px;
+      color: #555;
+    }
+
+    /* =========================
+       CUPOM
+    ========================= */
+
+    .coupon-box {
+      margin: 25px auto;
+      max-width: 500px;
+      padding: 22px;
+      border: 2px dashed #c00000;
+      border-radius: 16px;
+      background: #fff8f8;
+    }
+
+    .coupon-title {
+      color: #b40000;
+      font-weight: 900;
+      font-size: 14px;
+      text-transform: uppercase;
+      margin-bottom: 8px;
+    }
+
+    .coupon-code {
+      font-size: 26px;
+      font-weight: 900;
+      letter-spacing: 2px;
+      color: #222;
+      padding: 12px;
+      background: white;
+      border-radius: 10px;
+      border: 1px solid #ddd;
+      margin-bottom: 12px;
+    }
+
+    .coupon-instructions {
+      font-size: 14px;
+      color: #555;
+      margin-bottom: 17px;
+    }
+
+    .whatsapp-button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      background: #25D366;
+      color: white;
+      text-decoration: none;
+      padding: 14px 22px;
+      border-radius: 30px;
+      font-weight: 900;
+      transition: .2s;
+    }
+
+    .whatsapp-button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 15px rgba(37,211,102,.3);
+    }
+
+    .warning-box {
+      max-width: 650px;
+      margin: 20px auto 0;
+      padding: 12px;
+      background: #fff8e6;
+      border: 1px solid #f0d58a;
+      border-radius: 10px;
+      color: #735900;
+      font-size: 13px;
+    }
+
+    /* =========================
+       RODAPÉ
+    ========================= */
+
+    footer {
+      background: #a90000;
+      color: white;
+      text-align: center;
+      padding: 28px 15px;
+    }
+
+    footer h3 {
+      font-size: 19px;
+      margin-bottom: 6px;
+    }
+
+    footer p {
+      font-size: 13px;
+      opacity: .9;
+      margin-bottom: 5px;
+    }
+
+    footer a {
+      color: white;
+      font-weight: bold;
+      text-decoration: none;
+    }
+
+    .footer-links {
+      margin-top: 12px;
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 15px;
+    }
+
+    /* =========================
+       RESPONSIVO
+    ========================= */
+
+    @media (max-width: 650px) {
+
+      .header-container {
+        flex-direction: column;
+        text-align: center;
+      }
+
+      .logo {
+        justify-content: center;
+      }
+
+      .header-button {
+        width: 100%;
+        max-width: 280px;
+      }
+
+      .christmas-banner {
+        padding: 30px 18px;
+      }
+
+      .christmas-banner h2 {
+        font-size: 25px;
+      }
+
+      .christmas-banner p {
+        font-size: 15px;
+      }
+
+      .christmas-banner::before,
+      .christmas-banner::after {
+        font-size: 35px;
+      }
+
+      .quiz-card {
+        padding: 20px 16px;
+      }
+
+      .question {
+        font-size: 18px;
+      }
+
+      .button-area {
+        flex-direction: column-reverse;
+      }
+
+      .button-area .btn {
+        width: 100%;
+      }
+
+      .coupon-code {
+        font-size: 20px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- =========================
+       CABEÇALHO
+  ========================= -->
+
+  <header>
+    <div class="header-container">
+
+      <div class="logo">
+
+        <div class="logo-icon">
+          +
+        </div>
+
+        <div class="logo-text">
+          <h1>ATACADÃO FARMA CENTRO</h1>
+          <p>Drogaria do Péricles</p>
+        </div>
+
+      </div>
+
+      <a
+        class="header-button"
+        href="https://wa.me/5561992186067"
+        target="_blank"
+        rel="noopener"
+      >
+        💬 Fale conosco
+      </a>
+
+    </div>
+  </header>
+
+
+  <!-- =========================
+       BANNER DE NATAL
+  ========================= -->
+
+  <section class="hero">
+
+    <div class="christmas-banner">
+
+      <h2>🎅 Quiz de Natal 🎁</h2>
+
+      <p>
+        Teste seus conhecimentos sobre farmácia, saúde
+        e cuidados pessoais!
+      </p>
+
+      <div class="christmas-highlight">
+        Acerte 3 ou mais e conquiste seu cupom!
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- =========================
+       CONTEÚDO PRINCIPAL
+  ========================= -->
+
+  <main class="container">
+
+    <!-- INTRODUÇÃO -->
+
+    <div class="intro-card">
+
+      <h2>Você entende de saúde? 🩺</h2>
+
+      <p>
+        Responda às 5 perguntas do nosso Quiz de Natal.
+        Você precisa acertar pelo menos <strong>3 perguntas</strong>
+        para ser aprovado e receber as instruções para obter
+        seu cupom pelo WhatsApp.
+      </p>
+
+      <div class="rules">
+
+        <div class="rule">
+          🎄 5 perguntas
+        </div>
+
+        <div class="rule">
+          ⭐ 1 ponto por acerto
+        </div>
+
+        <div class="rule">
+          🏆 Mínimo de 3 acertos
+        </div>
+
+        <div class="rule">
+          📱 Cupom pelo WhatsApp
+        </div>
+
+      </div>
+
+    </div>
+
+
+    <!-- QUIZ -->
+
+    <div id="quiz-container">
+
+      <div class="progress-wrapper">
+
+        <div class="progress-info">
+          <span id="progress-text">Pergunta 1 de 5</span>
+          <span id="score-preview">0 acertos</span>
+        </div>
+
+        <div class="progress-bar">
+          <div
+            id="progress-fill"
+            class="progress-fill"
+          ></div>
+        </div>
+
+      </div>
+
+
+      <div class="quiz-card">
+
+        <div
+          id="question-number"
+          class="question-number"
+        >
+          Pergunta 1
+        </div>
+
+        <div
+          id="question"
+          class="question"
+        >
+          Carregando pergunta...
+        </div>
+
+        <div
+          id="options"
+          class="options"
+        ></div>
+
+        <div
+          id="error-message"
+          class="error-message"
+        >
+          ⚠️ Escolha uma alternativa antes de continuar.
+        </div>
+
+        <div class="button-area">
+
+          <button
+            id="back-button"
+            class="btn btn-secondary"
+            onclick="previousQuestion()"
+            style="display:none;"
+          >
+            ← Voltar
+          </button>
+
+          <button
+            id="next-button"
+            class="btn btn-primary"
+            onclick="nextQuestion()"
+          >
+            Próxima pergunta →
+          </button>
+
+        </div>
+
+      </div>
+
+    </div>
+
+
+    <!-- =========================
+         RESULTADO
+    ========================= -->
+
+    <div
+      id="result"
+      class="result"
+    >
+
+      <div
+        id="result-icon"
+        class="result-icon"
+      >
+        🎉
+      </div>
+
+      <h2 id="result-title">
+        Resultado
+      </h2>
+
+      <div
+        id="result-score"
+        class="score"
+      >
+      </div>
+
+      <p
+        id="result-text"
+        class="result-text"
+      >
+      </p>
+
+
+      <!-- CUPOM -->
+
+      <div
+        id="coupon-area"
+        style="display:none;"
+      >
+
+        <div class="coupon-box">
+
+          <div class="coupon-title">
+            🎁 Seu código de participação
+          </div>
+
+          <div
+            id="coupon-code"
+            class="coupon-code"
+          >
+          </div>
+
+          <p class="coupon-instructions">
+
+            <strong>Como receber seu cupom:</strong><br><br>
+
+            1. Clique no botão abaixo para abrir o WhatsApp
+            do Atacadão Farma Centro.<br>
+
+            2. Envie a mensagem que já estará preenchida
+            com seu código.<br>
+
+            3. Aguarde as instruções da equipe da farmácia
+            para validar sua participação.
+
+          </p>
+
+          <a
+            id="whatsapp-button"
+            class="whatsapp-button"
+            href="#"
+            target="_blank"
+            rel="noopener"
+          >
+            📲 Enviar código pelo WhatsApp
+          </a>
+
+        </div>
+
+        <div class="warning-box">
+
+          ⚠️ <strong>Importante:</strong>
+          o código apresentado nesta página deve ser enviado
+          pelo WhatsApp para validação. A participação e a
+          utilização do cupom estão sujeitas às regras e
+          condições divulgadas pelo Atacadão Farma Centro.
+
+        </div>
+
+      </div>
+
+
+      <!-- REPROVADO -->
+
+      <div
+        id="retry-area"
+        style="display:none;"
+      >
+
+        <p class="warning-box">
+
+          Não conseguiu 3 acertos desta vez?
+          Não tem problema! Revise seus conhecimentos
+          e tente novamente.
+
+        </p>
+
+        <br>
+
+        <button
+          class="btn btn-primary"
+          onclick="restartQuiz()"
+        >
+          🔄 Tentar novamente
+        </button>
+
+      </div>
+
+    </div>
+
+  </main>
+
+
+  <!-- =========================
+       RODAPÉ
+  ========================= -->
+
+  <footer>
+
+    <h3>ATACADÃO FARMA CENTRO</h3>
+
+    <p>
+      Drogaria do Péricles
+    </p>
+
+    <p>
+      A sua farmácia no Paranoá e entorno
+    </p>
+
+    <div class="footer-links">
+
+      <a
+        href="https://wa.me/5561992186067"
+        target="_blank"
+        rel="noopener"
+      >
+        WhatsApp
+      </a>
+
+      <a
+        href="https://www.instagram.com/farmacentro061/"
+        target="_blank"
+        rel="noopener"
+      >
+        Instagram
+      </a>
+
+      <a
+        href="https://whatsapp.com/channel/0029VbCNcI32f3EG9LzfoK3d"
+        target="_blank"
+        rel="noopener"
+      >
+        Canal WhatsApp
+      </a>
+
+    </div>
+
+  </footer>
+
+
+  <!-- =========================
+       JAVASCRIPT DO QUIZ
+  ========================= -->
+
+  <script>
+
+    /*
+     * ==============================================
+     * PERGUNTAS DO QUIZ
+     * ==============================================
+     *
+     * correct indica a alternativa correta.
+     */
+
+    const questions = [
+
+      {
+        question:
+          "Qual atitude ajuda a reduzir a transmissão de microrganismos e é recomendada especialmente antes de preparar ou consumir alimentos?",
+
+        options: [
+          "Lavar as mãos adequadamente com água e sabão",
+          "Usar perfume nas mãos",
+          "Tomar vitaminas diariamente",
+          "Evitar beber água durante o dia"
+        ],
+
+        correct: 0
+      },
+
+
+      {
+        question:
+          "Os antibióticos são medicamentos utilizados principalmente para tratar infecções causadas por qual tipo de agente?",
+
+        options: [
+          "Bactérias",
+          "Vírus",
+          "Todos os tipos de alergia",
+          "Qualquer tipo de dor"
+        ],
+
+        correct: 0
+      },
+
+
+      {
+        question:
+          "Ao utilizar um medicamento, qual atitude é mais segura quando existe dúvida sobre a forma correta de uso?",
+
+        options: [
+          "Consultar a bula e buscar orientação de um profissional de saúde",
+          "Aumentar a dose para obter efeito mais rápido",
+          "Usar a dose indicada para outra pessoa",
+          "Misturar o medicamento com outro por conta própria"
+        ],
+
+        correct: 0
+      },
+
+
+      {
+        question:
+          "Durante a exposição ao sol, qual cuidado é importante para ajudar a proteger a pele?",
+
+        options: [
+          "Usar proteção solar de acordo com as orientações do produto",
+          "Aplicar perfume no lugar do protetor solar",
+          "Usar protetor solar apenas uma vez por mês",
+          "Evitar qualquer proteção quando o dia estiver nublado"
+        ],
+
+        correct: 0
+      },
+
+
+      {
+        question:
+          "Qual atitude é mais adequada antes de utilizar um medicamento que você nunca usou?",
+
+        options: [
+          "Verificar as orientações de uso e, quando necessário, procurar orientação profissional",
+          "Tomar uma dose maior para testar o efeito",
+          "Seguir automaticamente a dose de um amigo",
+          "Misturar com outro medicamento sem verificar possíveis interações"
+        ],
+
+        correct: 0
+      }
+
+    ];
+
+
+    /* ==============================================
+       VARIÁVEIS
+    ============================================== */
+
+    let currentQuestion = 0;
+    let score = 0;
+    let answers = new Array(questions.length).fill(null);
+
+
+    /* ==============================================
+       ELEMENTOS
+    ============================================== */
+
+    const questionElement =
+      document.getElementById("question");
+
+    const questionNumberElement =
+      document.getElementById("question-number");
+
+    const optionsElement =
+      document.getElementById("options");
+
+    const progressText =
+      document.getElementById("progress-text");
+
+    const progressFill =
+      document.getElementById("progress-fill");
+
+    const scorePreview =
+      document.getElementById("score-preview");
+
+    const nextButton =
+      document.getElementById("next-button");
+
+    const backButton =
+      document.getElementById("back-button");
+
+    const errorMessage =
+      document.getElementById("error-message");
+
+    const quizContainer =
+      document.getElementById("quiz-container");
+
+    const result =
+      document.getElementById("result");
+
+    const resultTitle =
+      document.getElementById("result-title");
+
+    const resultScore =
+      document.getElementById("result-score");
+
+    const resultText =
+      document.getElementById("result-text");
+
+    const resultIcon =
+      document.getElementById("result-icon");
+
+    const couponArea =
+      document.getElementById("coupon-area");
+
+    const retryArea =
+      document.getElementById("retry-area");
+
+    const couponCode =
+      document.getElementById("coupon-code");
+
+    const whatsappButton =
+      document.getElementById("whatsapp-button");
+
+
+    /* ==============================================
+       MOSTRAR PERGUNTA
+    ============================================== */
+
+    function loadQuestion() {
+
+      const q = questions[currentQuestion];
+
+      questionNumberElement.textContent =
+        `Pergunta ${currentQuestion + 1}`;
+
+      questionElement.textContent =
+        q.question;
+
+      progressText.textContent =
+        `Pergunta ${currentQuestion + 1} de ${questions.length}`;
+
+      const progress =
+        ((currentQuestion + 1) / questions.length) * 100;
+
+      progressFill.style.width =
+        progress + "%";
+
+      optionsElement.innerHTML = "";
+
+      q.options.forEach((option, index) => {
+
+        const optionDiv =
+          document.createElement("div");
+
+        optionDiv.className = "option";
+
+        optionDiv.innerHTML = `
+
+          <input
+            type="radio"
+            name="answer"
+            id="option-${index}"
+            value="${index}"
+            ${answers[currentQuestion] === index ? "checked" : ""}
+          >
+
+          <label for="option-${index}">
+
+            <span class="option-letter">
+              ${String.fromCharCode(65 + index)}
+            </span>
+
+            ${option}
+
+          </label>
+
+        `;
+
+        optionsElement.appendChild(optionDiv);
+
+      });
+
+
+      errorMessage.style.display = "none";
+
+      backButton.style.display =
+        currentQuestion > 0 ? "block" : "none";
+
+
+      if (currentQuestion === questions.length - 1) {
+
+        nextButton.textContent =
+          "Finalizar Quiz 🎉";
+
+      } else {
+
+        nextButton.textContent =
+          "Próxima pergunta →";
+
+      }
+
+      updateScorePreview();
+
+    }
+
+
+    /* ==============================================
+       PRÓXIMA PERGUNTA
+    ============================================== */
+
+    function nextQuestion() {
+
+      const selected =
+        document.querySelector(
+          'input[name="answer"]:checked'
+        );
+
+
+      if (!selected) {
+
+        errorMessage.style.display =
+          "block";
+
+        return;
+      }
+
+
+      answers[currentQuestion] =
+        Number(selected.value);
+
+
+      if (currentQuestion === questions.length - 1) {
+
+        finishQuiz();
+
+        return;
+      }
+
+
+      currentQuestion++;
+
+      loadQuestion();
+
+      window.scrollTo({
+        top: 250,
+        behavior: "smooth"
+      });
+
+    }
+
+
+    /* ==============================================
+       VOLTAR
+    ============================================== */
+
+    function previousQuestion() {
+
+      if (currentQuestion <= 0) {
+        return;
+      }
+
+      const selected =
+        document.querySelector(
+          'input[name="answer"]:checked'
+        );
+
+      if (selected) {
+
+        answers[currentQuestion] =
+          Number(selected.value);
+
+      }
+
+      currentQuestion--;
+
+      loadQuestion();
+
+      window.scrollTo({
+        top: 250,
+        behavior: "smooth"
+      });
+
+    }
+
+
+    /* ==============================================
+       SCORE
+    ============================================== */
+
+    function calculateScore() {
+
+      let total = 0;
+
+      answers.forEach((answer, index) => {
+
+        if (
+          answer !== null &&
+          answer === questions[index].correct
+        ) {
+
+          total++;
+
+        }
+
+      });
+
+      return total;
+
+    }
+
+
+    function updateScorePreview() {
+
+      const temporaryScore =
+        calculateScore();
+
+      scorePreview.textContent =
+        `${temporaryScore} acerto${temporaryScore === 1 ? "" : "s"}`;
+
+    }
+
+
+    /* ==============================================
+       GERAR CUPOM
+    ============================================== */
+
+    function generateCouponCode() {
+
+      const random =
+        Math.random()
+          .toString(36)
+          .substring(2, 7)
+          .toUpperCase();
+
+      return "NATAL-" + random;
+
+    }
+
+
+    /* ==============================================
+       FINALIZAR QUIZ
+    ============================================== */
+
+    function finishQuiz() {
+
+      score = calculateScore();
+
+      quizContainer.style.display =
+        "none";
+
+      result.style.display =
+        "block";
+
+      resultScore.textContent =
+        `Você acertou ${score} de ${questions.length} perguntas.`;
+
+
+      /* =========================
+         APROVADO
+      ========================= */
+
+      if (score >= 3) {
+
+        result.className =
+          "result approved";
+
+        resultIcon.textContent =
+          "🎉";
+
+        resultTitle.textContent =
+          "Parabéns! Você foi aprovado!";
+
+        resultText.innerHTML =
+          "Você atingiu a pontuação mínima de <strong>3 acertos</strong>! " +
+          "Agora siga as instruções abaixo para receber seu cupom pelo WhatsApp.";
+
+        couponArea.style.display =
+          "block";
+
+        retryArea.style.display =
+          "none";
+
+
+        const code =
+          generateCouponCode();
+
+        couponCode.textContent =
+          code;
+
+
+        const message =
+          `Olá, Atacadão Farma Centro! 🎄🎁\n\n` +
+          `Participei do Quiz de Natal e fui aprovado!\n\n` +
+          `Meu código é: ${code}\n\n` +
+          `Gostaria de receber as instruções para validar meu cupom.`;
+
+        whatsappButton.href =
+          "https://wa.me/5561992186067?text=" +
+          encodeURIComponent(message);
+
+      }
+
+
+      /* =========================
+         NÃO APROVADO
+      ========================= */
+
+      else {
+
+        result.className =
+          "result failed";
+
+        resultIcon.textContent =
+          "💪";
+
+        resultTitle.textContent =
+          "Quase lá!";
+
+        resultText.innerHTML =
+          "Para ser aprovado, você precisa acertar " +
+          "<strong>pelo menos 3 das 5 perguntas</strong>. " +
+          "Revise seus conhecimentos e tente novamente.";
+
+        couponArea.style.display =
+          "none";
+
+        retryArea.style.display =
+          "block";
+
+      }
+
+
+      window.scrollTo({
+        top: 250,
+        behavior: "smooth"
+      });
+
+    }
+
+
+    /* ==============================================
+       REINICIAR
+    ============================================== */
+
+    function restartQuiz() {
+
+      currentQuestion = 0;
+
+      score = 0;
+
+      answers =
+        new Array(questions.length).fill(null);
+
+      result.style.display =
+        "none";
+
+      quizContainer.style.display =
+        "block";
+
+      loadQuestion();
+
+      window.scrollTo({
+        top: 250,
+        behavior: "smooth"
+      });
+
+    }
+
+
+    /* ==============================================
+       INICIAR
+    ============================================== */
+
+    loadQuestion();
+
+  </script>
+
+</body>
+</html>
